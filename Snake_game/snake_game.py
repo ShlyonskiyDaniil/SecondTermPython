@@ -17,7 +17,7 @@ control = Control()
 food = Food(screen_size)
 
 while control.run:
-    pg.time.delay(30)
+    pg.time.delay(50)
     control.control(snake)
 
     screen.fill(BLACK)
@@ -30,3 +30,9 @@ while control.run:
     snake.bump(control)
 
     pg.display.update()
+    print(len(snake.tail))
+
+print('-' * 20)
+print('YOUR RESULT:', end=' ')
+print(len(snake.tail) - 3)
+print('-' * 20)

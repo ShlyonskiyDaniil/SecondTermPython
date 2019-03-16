@@ -60,4 +60,3 @@ class Food(object):
                     snake.tail.append([last_part[0] - 11, last_part[1]])
                 elif last_part[0] > prelast_part[0]:
                     snake.tail.append([last_part[0], last_part[1]])
-
