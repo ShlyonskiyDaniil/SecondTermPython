@@ -8,7 +8,7 @@ from result import game_result
 # Players' parameters:
 player_wasd = 'Player1'      # First player name;
 player_ijkl = 'Player2'      # Second player name;
-game_time = 5                # Game time in seconds;
+game_time = 30               # Game time in seconds;
 screen_size = (400, 400)     # Screen size.
 # End of players' parameters.
 
