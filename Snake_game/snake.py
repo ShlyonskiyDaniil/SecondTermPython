@@ -2,15 +2,17 @@ import pygame as pg
 
 
 WHITE = (255, 255, 255)
-YELLOW = (255, 255, 0)
+YELLOW = (255, 183, 0)
 GREEN = (0, 255, 0)
 
+
 class Snake(object):
-    def __init__(self):
-        self.head = [50, 50]
-        self.tail = [[50, 50], [40, 50], [30, 50]]
-        self.radius = 4
+    def __init__(self, screen_height):
+        self.head = [50, (screen_height // 2) - 40]
+        self.tail = [[50, (screen_height // 2) - 40], [40, (screen_height // 2) - 40], [40, (screen_height // 2) - 40]]
+        self.radius = 5
         self.speed = 2 * self.radius + 2
+        self.win = False
 
     def turn(self, control, screen_size):
         if control.facing == 'right':
@@ -45,7 +47,7 @@ class Snake(object):
             else:
                     pg.draw.circle(screen, GREEN, (part[0], part[1]), self.radius)
 
-    def bump(self, control):
+    def bump(self, control, snake):
         for part in self.tail[1:]:
             if ((part[0] - self.radius <= self.head[0] - self.radius <= part[0] + self.radius or
                  part[0] - self.radius <= self.head[0] + self.radius <= part[0] + self.radius) and
@@ -53,3 +55,48 @@ class Snake(object):
                  part[1] - self.radius <= self.head[1] + self.radius <= part[1] + self.radius)):
 
                 control.run = False
+                self.win = False
+        
+        for part in self.tail:
+            if ((part[0] - self.radius <= snake.head[0] - self.radius <= part[0] + self.radius or
+                 part[0] - self.radius <= snake.head[0] + self.radius <= part[0] + self.radius) and
+                (part[1] - self.radius <= snake.head[1] - self.radius <= part[1] + self.radius or
+                 part[1] - self.radius <= snake.head[1] + self.radius <= part[1] + self.radius)):
+
+                control.run = False
+                self.win = True
+
+class Snake_second(Snake):
+    def __init__(self, screen_height):
+        self.head = [50, (screen_height // 2) + 40]
+        self.tail = [[50, (screen_height // 2) + 40], [40, (screen_height // 2) + 40], [40, (screen_height // 2) + 40]]
+        self.radius = 5
+        self.speed = 2 * self.radius + 2
+        self.win = 0
+
+    def draw_snake(self, screen):
+
+        for part in self.tail:
+            if part == self.head:
+                pg.draw.circle(screen, (73, 15, 175), (part[0], part[1]), self.radius)
+            else:
+                pg.draw.circle(screen, (255, 224, 0), (part[0], part[1]), self.radius)
+
+    def bump(self, control, snake):
+        for part in self.tail[1:]:
+            if ((part[0] - self.radius <= self.head[0] - self.radius <= part[0] + self.radius or
+                 part[0] - self.radius <= self.head[0] + self.radius <= part[0] + self.radius) and
+                (part[1] - self.radius <= self.head[1] - self.radius <= part[1] + self.radius or
+                 part[1] - self.radius <= self.head[1] + self.radius <= part[1] + self.radius)):
+
+                control.run = False
+                self.win = False
+
+        for part in self.tail:
+            if ((part[0] - self.radius <= snake.head[0] - self.radius <= part[0] + self.radius or
+                 part[0] - self.radius <= snake.head[0] + self.radius <= part[0] + self.radius) and
+                (part[1] - self.radius <= snake.head[1] - self.radius <= part[1] + self.radius or
+                 part[1] - self.radius <= snake.head[1] + self.radius <= part[1] + self.radius)):
+
+                control.run = False
+                self.win = True

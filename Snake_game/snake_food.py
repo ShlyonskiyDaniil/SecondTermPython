@@ -4,18 +4,18 @@ from snake import Snake
 
 
 WHITE = (255, 255, 255)
+RED = (255, 0, 0)
 
 class Food(object):
     def __init__(self, screen_size):
         self.x = screen_size[0] // 2
         self.y = screen_size[1] // 2
-        self.radius = 5
+        self.radius = 6
         self.screen_size = screen_size
         self.is_possible = False
 
 
-    def draw_food(self, screen):
-        snake = Snake()
+    def draw_food(self, screen, snake):
 
         for part in snake.tail:
             if not (self.x - self.radius <= part[0] + snake.radius <= self.x + self.radius or 
@@ -26,7 +26,7 @@ class Food(object):
                 self.is_possible = True
 
         if self.is_possible:
-            pg.draw.circle(screen, WHITE, (self.x, self.y), self.radius)
+            pg.draw.circle(screen, RED, (self.x, self.y), self.radius)
         else:
             self.x = randint(self.radius, self.screen_size[0] - self.radius)
             self.y = randint(self.radius, self.screen_size[1] - self.radius)
