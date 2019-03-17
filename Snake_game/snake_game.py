@@ -5,12 +5,12 @@ from snake_food import Food
 from time import time
 from result import game_result
 
-# Players' parameter
-player_wasd = 'Player1'
-player_ijkl = 'Player2'
-game_time = 5 # seconds
-screen_size = (400, 400)
-
+# Players' parameters:
+player_wasd = 'Player1'      # First player name;
+player_ijkl = 'Player2'      # Second player name;
+game_time = 5                # Game time in seconds;
+screen_size = (400, 400)     # Screen size.
+# End of players' parameters.
 
 BLACK = (0, 0, 0)
 
