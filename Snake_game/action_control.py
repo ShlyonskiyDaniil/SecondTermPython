@@ -89,4 +89,4 @@ class Control_second_snake(Control):
                     self.facing = 'down'		
                     snake.speed = 2 * snake.radius + 2		
         elif keys[pg.K_SPACE]:		
-            snake.tail.append([-1 * snake.radius, -1 * snake.radius])		
+            snake.tail.append([-1 * snake.radius, -1 * snake.radius])

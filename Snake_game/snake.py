@@ -12,7 +12,7 @@ class Snake(object):
         self.tail = [[50, (screen_height // 2) - 40], [40, (screen_height // 2) - 40], [40, (screen_height // 2) - 40]]		
         self.radius = 5		
         self.speed = 2 * self.radius + 2		
-        self.win = False		
+        self.win = 0		
 
     def turn(self, control, screen_size):		
         if control.facing == 'right':		
@@ -47,7 +47,9 @@ class Snake(object):
             else:		
                     pg.draw.circle(screen, GREEN, (part[0], part[1]), self.radius)		
 
-    def bump(self, control, snake):		
+    def bump(self, control, snake):	
+        once_flag = True
+
         for part in self.tail[1:]:		
             if ((part[0] - self.radius <= self.head[0] - self.radius <= part[0] + self.radius or		
                 part[0] - self.radius <= self.head[0] + self.radius <= part[0] + self.radius) and		
@@ -55,7 +57,9 @@ class Snake(object):
                 part[1] - self.radius <= self.head[1] + self.radius <= part[1] + self.radius)):		
 
                 control.run = False		
-                self.win = False		
+                if once_flag:
+                    self.win += 1
+                    once_flag = False
 
         for part in self.tail:		
             if ((part[0] - self.radius <= snake.head[0] - self.radius <= part[0] + self.radius or		
@@ -64,7 +68,10 @@ class Snake(object):
                 part[1] - self.radius <= snake.head[1] + self.radius <= part[1] + self.radius)):		
 
                 control.run = False		
-                self.win = True		
+                if once_flag:
+                    snake.win += 1
+                    once_flag = False
+
 
 class Snake_second(Snake):		
     def __init__(self, screen_height):		
@@ -82,7 +89,9 @@ class Snake_second(Snake):
             else:		
                 pg.draw.circle(screen, (255, 224, 0), (part[0], part[1]), self.radius)		
 
-    def bump(self, control, snake):		
+    def bump(self, control, snake):
+        once_flag = True
+
         for part in self.tail[1:]:		
             if ((part[0] - self.radius <= self.head[0] - self.radius <= part[0] + self.radius or		
                 part[0] - self.radius <= self.head[0] + self.radius <= part[0] + self.radius) and		
@@ -90,7 +99,9 @@ class Snake_second(Snake):
                 part[1] - self.radius <= self.head[1] + self.radius <= part[1] + self.radius)):		
 
                 control.run = False		
-                self.win = False		
+                if once_flag:
+                    self.win += 1
+                    once_flag = False
 
         for part in self.tail:		
             if ((part[0] - self.radius <= snake.head[0] - self.radius <= part[0] + self.radius or		
@@ -98,5 +109,7 @@ class Snake_second(Snake):
                 (part[1] - self.radius <= snake.head[1] - self.radius <= part[1] + self.radius or		
                 part[1] - self.radius <= snake.head[1] + self.radius <= part[1] + self.radius)):		
 
-                control.run = False		
-                self.win = True
+                control.run = False
+                if once_flag:
+                    snake.win += 1
+                    once_flag = False

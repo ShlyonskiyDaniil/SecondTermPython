@@ -17,25 +17,26 @@ def game_result(first_snake, second_snake, player_wasd, player_ijkl, time_flag):
     else:		
         print('BUMPED')		
     print('-' * 25)		
-    print('-' * 25)		
+    print('-' * 25)	
 
-    if points_w > points_i:		
-        first_snake.win = True		
-        second_snake.win = False		
-    elif points_w < points_i:		
-        first_snake.win = False		
-        second_snake.win = True		
-    else:		
-        first_snake.win = True		
-        second_snake.win = True		
+    if not time_flag:
+        if points_w > points_i:		
+            first_snake.win = 0		
+            second_snake.win = 1		
+        elif points_w < points_i:		
+            first_snake.win = 1		
+            second_snake.win = 0		
+        else:		
+            first_snake.win = 1		
+            second_snake.win = 1		
 
     print('Winner:'.ljust(10, ' '), end='')		
-    if first_snake.win and second_snake.win:		
+    if first_snake.win + second_snake.win >= 2:
         print('FRIENDSHIP')		
         print('-' * 25)		
-    elif first_snake.win:		
+    elif first_snake.win == 0:
         print(f'{player_wasd}')		
         print('-' * 25)		
-    elif second_snake.win:		
+    elif second_snake.win == 0:		
         print(f'{player_ijkl}')		
         print('-' * 25)
