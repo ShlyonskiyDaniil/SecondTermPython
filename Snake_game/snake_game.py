@@ -3,12 +3,13 @@ from action_control import Control, Control_second_snake
 from snake import Snake, Snake_second
 from snake_food import Food
 from time import time
-from result import game_result
+from result import game_result, result_screen
+
 
 # Players' parameters:
 player_wasd = 'Player1'      # First player name;
 player_ijkl = 'Player2'      # Second player name;
-game_time = 30               # Game time in seconds;
+game_time = 15               # Game time in seconds;
 screen_size = (400, 400)     # Screen size.
 # End of players' parameters.
 
@@ -17,6 +18,7 @@ BLACK = (0, 0, 0)
 pg.init()
 screen = pg.display.set_mode(screen_size)
 pg.display.set_caption("Snake forever")
+delay = 50
 
 
 first_snake = Snake(screen_size[1])
@@ -32,7 +34,10 @@ while control.run and control_second_snake.run:
         time_flag = False
         control.run = False
 
-    pg.time.delay(50)
+    if time() - timer > game_time // 2:
+        pg.time.delay(delay - 30)
+    else:
+        pg.time.delay(delay)
     control.control(first_snake)
     control_second_snake.control(second_snake)
 
@@ -58,3 +63,4 @@ while control.run and control_second_snake.run:
     pg.display.update()
 
 game_result(first_snake, second_snake, player_wasd, player_ijkl, time_flag)
+result_screen(first_snake, second_snake, food, screen)

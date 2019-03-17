@@ -1,3 +1,8 @@
+import pygame as pg
+
+
+BLACK = (0, 0, 0)
+
 def game_result(first_snake, second_snake, player_wasd, player_ijkl, time_flag):		
     points_w = len(first_snake.tail)		
     points_i = len(second_snake.tail)		
@@ -40,3 +45,24 @@ def game_result(first_snake, second_snake, player_wasd, player_ijkl, time_flag):
     elif second_snake.win == 0:		
         print(f'{player_ijkl}')		
         print('-' * 25)
+
+
+def result_screen(first_snake, second_snake, food, screen):
+    result_screen = True
+
+    while result_screen:
+        pg.time.delay(50)
+
+        for event in pg.event.get():		
+            if event.type == pg.QUIT:
+                    result_screen = False
+
+        screen.fill(BLACK)
+        
+        food.draw_food(screen, first_snake)
+        food.draw_food(screen, second_snake)
+
+        first_snake.draw_snake(screen)
+        second_snake.draw_snake(screen)
+
+        pg.display.update()
