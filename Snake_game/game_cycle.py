@@ -8,7 +8,8 @@ from time import time
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
-def game_cycle(screen, screen_size, delay, 
+
+def game_cycle(screen, screen_size, delay,
                first_snake, second_snake,
                control_first_snake,
                control_second_snake,
@@ -66,5 +67,7 @@ def game_cycle(screen, screen_size, delay,
 
             first_food.was_eaten(first_snake, control_first_snake)
             first_food.draw_food(screen, first_snake)
+
+            first_snake.bump(control_first_snake)
 
         pg.display.update()

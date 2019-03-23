@@ -15,7 +15,7 @@ class Button(object):
         click = pg.mouse.get_pressed()
 
         if (self.x < mouse[0] < self.x + self.width and
-            self.y < mouse[1] < self.y + self.height):
+             self.y < mouse[1] < self.y + self.height):
 
             pg.draw.rect(screen, self.active_colour, (self.x, self.y, self.width, self.height))
 
