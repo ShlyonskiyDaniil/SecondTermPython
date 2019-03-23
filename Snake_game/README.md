@@ -48,7 +48,7 @@
 **snake_food.py**,
 **snake.py**, 
 **action_control.py**,
-**result.py**
+**result.py**;
 * Положить их в одну директорию;
 * Перед запуском в файле snake_game.py заполнить поле ;
 "Players' pararameters";

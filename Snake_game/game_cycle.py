@@ -67,8 +67,4 @@ def game_cycle(screen, screen_size, delay,
             first_food.was_eaten(first_snake, control_first_snake)
             first_food.draw_food(screen, first_snake)
 
-
-
-
-
         pg.display.update()
