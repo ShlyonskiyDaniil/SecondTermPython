@@ -8,10 +8,10 @@ RED = (255, 0, 0)
 
 class Food(object):		
     def __init__(self, screen_size):		
-        self.x = screen_size[0] // 2		
-        self.y = screen_size[1] // 2		
-        self.radius = 6		
-        self.screen_size = screen_size		
+        self.radius = 6
+        self.screen_size = screen_size
+        self.x = randint(self.radius, self.screen_size[0] - self.radius)		
+        self.y = randint(self.radius, self.screen_size[1] - self.radius)		
         self.is_possible = False		
 
 

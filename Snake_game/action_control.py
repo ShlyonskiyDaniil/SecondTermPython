@@ -1,7 +1,7 @@
 import pygame as pg		
 
  
-class Control(object):		
+class Control_first_snake(object):		
     def __init__(self):		
         self.run = True		
         self.facing = 'right'		
@@ -48,7 +48,7 @@ class Control(object):
         elif keys[pg.K_SPACE]:		
             snake.tail.append([-1 * snake.radius, -1 * snake.radius])		
 
-class Control_second_snake(Control):		
+class Control_second_snake(Control_first_snake):		
     def control(self, snake):		
         for event in pg.event.get():		
             if event.type == pg.QUIT:		

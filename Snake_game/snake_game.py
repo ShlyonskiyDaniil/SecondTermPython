@@ -1,19 +1,22 @@
 import pygame as pg
-from action_control import Control, Control_second_snake
+from action_control import Control_first_snake, Control_second_snake
 from snake import Snake, Snake_second
 from snake_food import Food
 from time import time
-from result import game_result, result_screen
+from result import multi_result_screen, single_result_screen
+from menu import menu_screen
+from game_cycle import game_cycle
 
 
 # Players' parameters:
-player_wasd = 'Player1'      # First player name;
-player_ijkl = 'Player2'      # Second player name;
-game_time = 15               # Game time in seconds;
-screen_size = (400, 400)     # Screen size.
+player_wasd = 'Vovka'      # First player name;
+player_ijkl = 'Vladka'      # Second player name;
+game_time = 3               # Game time in seconds;
 # End of players' parameters.
 
 BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+screen_size = (520, 500) 
 
 pg.init()
 screen = pg.display.set_mode(screen_size)
@@ -23,44 +26,83 @@ delay = 50
 
 first_snake = Snake(screen_size[1])
 second_snake = Snake_second(screen_size[1])
-control = Control()
+control_first_snake = Control_first_snake()
 control_second_snake = Control_second_snake()
-food = Food(screen_size)
+first_food = Food(screen_size)
+second_food = Food(screen_size)
 
-timer = time()
-time_flag = True
-while control.run and control_second_snake.run:
-    if time() - timer > game_time:
-        time_flag = False
-        control.run = False
+time_flag = [True,]
 
-    if time() - timer > game_time // 2:
-        pg.time.delay(delay - 30)
-    else:
-        pg.time.delay(delay)
-    control.control(first_snake)
-    control_second_snake.control(second_snake)
+# menu
+game = True
+while game:
+    first_snake = Snake(screen_size[1])
+    second_snake = Snake_second(screen_size[1])
+    control_first_snake = Control_first_snake()
+    control_second_snake = Control_second_snake()
+    first_food = Food(screen_size)
+    second_food = Food(screen_size)
+    time_flag = [True,]
 
-    screen.fill(BLACK)
-    
-    food.draw_food(screen, first_snake)
-    food.draw_food(screen, second_snake)
+    player_quantity = menu_screen(screen, screen_size, BLACK)
+    game_cycle(screen, screen_size, delay, 
+               first_snake, second_snake,
+               control_first_snake,
+               control_second_snake,
+               first_food, second_food,
+               game_time, time_flag,
+               player_quantity)
+    if player_quantity == 'multi':
+        multi_result_screen(screen, first_snake, 
+                    second_snake, first_food, 
+                    second_food, player_wasd,
+                    player_ijkl, time_flag)
+    elif player_quantity == 'single':
+        single_result_screen(screen, first_snake, 
+                            first_food, player_wasd,
+                            time_flag)
+# game_result(first_snake, second_snake, player_wasd, player_ijkl, time_flag)
 
-    first_snake.draw_snake(screen)
-    first_snake.turn(control, screen_size)
-    first_snake.movement()
 
-    second_snake.draw_snake(screen)
-    second_snake.turn(control_second_snake, screen_size)
-    second_snake.movement()
 
-    food.was_eaten(first_snake, control)
-    food.was_eaten(second_snake, control_second_snake)
+# timer = time()
+# while control_first_snake.run and control_second_snake.run:
+#     if time() - timer > game_time:
+#         time_flag = False
+#         control_first_snake.run = False
 
-    first_snake.bump(control, second_snake)
-    second_snake.bump(control_second_snake, first_snake)
+#     if time() - timer > game_time // 2:
+#         pg.time.delay(delay - 30)
+#     else:
+#         pg.time.delay(delay)
 
-    pg.display.update()
+#     screen.fill(BLACK)
 
-game_result(first_snake, second_snake, player_wasd, player_ijkl, time_flag)
-result_screen(first_snake, second_snake, food, screen)
+#     control_first_snake.control(first_snake)
+#     control_second_snake.control(second_snake)
+
+#     first_snake.draw_snake(screen)
+#     first_snake.turn(control_first_snake, screen_size)
+#     first_snake.movement()
+
+#     second_snake.draw_snake(screen)
+#     second_snake.turn(control_second_snake, screen_size)
+#     second_snake.movement()
+
+#     if time() - timer < game_time // 2:
+#         second_food.was_eaten(first_snake, control_first_snake)
+#         second_food.was_eaten(second_snake, control_second_snake)
+
+#         second_food.draw_food(screen, first_snake)
+#         second_food.draw_food(screen, second_snake)
+
+#     first_food.was_eaten(first_snake, control_first_snake)
+#     first_food.was_eaten(second_snake, control_second_snake)
+
+#     first_food.draw_food(screen, first_snake)
+#     first_food.draw_food(screen, second_snake)
+
+#     first_snake.bump(control_first_snake, second_snake)
+#     second_snake.bump(control_second_snake, first_snake)
+
+#     pg.display.update()
