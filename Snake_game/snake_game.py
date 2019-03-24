@@ -9,9 +9,9 @@ from game_cycle import game_cycle
 
 
 # Players' parameters:
-player_wasd = 'Vovka'      # First player name;
-player_ijkl = 'Vladka'      # Second player name;
-game_time = 15               # Game time in seconds;
+player_wasd = 'Tema'      # First player name;
+player_ijkl = 'Danka'       # Second player name;
+game_time = 60              # Game time in seconds;
 # End of players' parameters.
 
 BLACK = (0, 0, 0)

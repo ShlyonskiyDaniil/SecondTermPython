@@ -15,12 +15,12 @@ def multi_result_screen(screen, first_snake, second_snake, first_food,
     points_i = len(second_snake.tail)
 
     player_w = player_wasd + ':'
-    player_w = '{} {}'.format(player_w.ljust(15, ' '), points_w)
+    player_w = '{}{}'.format(player_w.ljust(20, ' '), points_w)
 
     player_i = player_ijkl + ':'
-    player_i = '{} {}'.format(player_i.ljust(15, ' '), points_i)
+    player_i = '{}{}'.format(player_i.ljust(20, ' '), points_i)
 
-    winner = 'Winner:'.ljust(15, ' ')
+    winner = 'Winner:'.ljust(20, ' ')
 
     if not time_flag[0]:
         if points_w > points_i:
