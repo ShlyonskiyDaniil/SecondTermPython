@@ -20,8 +20,8 @@ class Button(object):
                          self.width, self.height))
 
             for event in pg.event.get():
-                if event.type == pg.MOUSEBUTTONUP:
-                    pg.time.delay(30)
+                if (event.type == pg.MOUSEBUTTONDOWN or
+                   event.type == pg.MOUSEBUTTONUP):
                     return 'done'
         else:
             pg.draw.rect(screen, self.inactive_colour, (self.x, self.y,
