@@ -60,7 +60,8 @@
 **action_control.py**,
 **game_cycle.py**,
 **menu.py**,
-**button.py**
+**button.py**,
+**colours.py**
 **result.py**;
 * Положить их в одну директорию;
 * Перед запуском в файле snake_game.py заполнить поле
