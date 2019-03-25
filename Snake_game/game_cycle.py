@@ -3,10 +3,7 @@ from action_control import Control_first_snake, Control_second_snake
 from snake import Snake, Snake_second
 from snake_food import Food
 from time import time
-
-
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
+from colours import BLACK, WHITE
 
 
 def game_cycle(screen, screen_size, delay,

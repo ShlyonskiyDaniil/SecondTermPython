@@ -6,16 +6,15 @@ from time import time
 from result import multi_result_screen, single_result_screen
 from menu import menu_screen
 from game_cycle import game_cycle
+from colours import BLACK, WHITE
 
 
 # Players' parameters:
-player_wasd = 'Tema'      # First player name;
-player_ijkl = 'Danka'       # Second player name;
+player_wasd = 'Vovka'       # First player name;
+player_ijkl = 'Vladka'      # Second player name;
 game_time = 60              # Game time in seconds;
 # End of players' parameters.
 
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
 screen_size = (520, 500)
 
 pg.init()

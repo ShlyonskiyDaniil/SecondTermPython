@@ -1,9 +1,5 @@
 import pygame as pg
-
-
-WHITE = (255, 255, 255)
-YELLOW = (255, 183, 0)
-GREEN = (0, 255, 0)
+from colours import WHITE, YELLOW, GREEN
 
 
 class Snake(object):

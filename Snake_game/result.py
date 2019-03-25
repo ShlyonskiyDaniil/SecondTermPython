@@ -2,9 +2,8 @@ import pygame as pg
 from button import Button
 from menu import menu_screen
 import sys
+from colours import BLACK
 
-
-BLACK = (0, 0, 0)
 
 
 def multi_result_screen(screen, first_snake, second_snake, first_food,
