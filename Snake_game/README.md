@@ -63,13 +63,12 @@
 **button.py**,
 **colours.py**
 **result.py**;
+**run_me.py**
 * Положить их в одну директорию;
-* Перед запуском в файле snake_game.py заполнить поле
-"Players' pararameters";
-* Запустить выполнение скрипта snake_game.py
+* Запустить выполнение скрипта run_me.py
 следующей командой в терминале.
 
 ```
-python3 snake_game.py
+python3 run_me.py
 ```
 

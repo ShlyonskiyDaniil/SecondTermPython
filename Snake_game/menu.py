@@ -2,13 +2,21 @@ import pygame as pg
 from button import Button
 import sys
 from game_cycle import game_cycle
+from colours import Colours
 
 
 def menu_screen(screen, screen_size, screen_colour):
+    """Defines a menu screen view.
 
-    single_button = Button(200, 50, 150, 130, (169, 169, 169), (225, 186, 207))
-    multi_button = Button(200, 50, 150, 190, (169, 169, 169), (225, 186, 207))
-    exit_button = Button(200, 50, 150, 250, (169, 169, 169), (225, 186, 207))
+    Arguments:
+        screen: Game dislpay.
+        screen_size(tuple): Screen_widht(int), screen height(int).
+        screen_colour(tuple): Screen_colour(RGB).
+    """
+
+    single_button = Button(200, 50, 150, 130, Colours().GREY, Colours().PINK)
+    multi_button = Button(200, 50, 150, 190, Colours().GREY, Colours().PINK)
+    exit_button = Button(200, 50, 150, 250, Colours().GREY, Colours().PINK)
 
     touched = False
     menu_screen = True

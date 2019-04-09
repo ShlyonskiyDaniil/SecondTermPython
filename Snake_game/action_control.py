@@ -2,11 +2,21 @@ import pygame as pg
 
 
 class Control_first_snake(object):
+    """Class for first snake actions control."""
+
     def __init__(self):
+        """Init instance."""
+
         self.run = True
         self.facing = 'right'
 
     def control(self, snake):
+        """Defines snake actions.
+
+        Arguments:
+            snake(Snake): An insta of Snake.
+        """
+
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 self.run = False
@@ -50,7 +60,15 @@ class Control_first_snake(object):
 
 
 class Control_second_snake(Control_first_snake):
+    """Class for second snake actions control."""
+
     def control(self, snake):
+        """Defines snake actions.
+
+        Arguments:
+            snake(Snake): An insta of Snake.
+        """
+
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 self.run = False

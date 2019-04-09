@@ -2,12 +2,24 @@ import pygame as pg
 from button import Button
 from menu import menu_screen
 import sys
-from colours import BLACK
-
+from colours import Colours
 
 
 def multi_result_screen(screen, first_snake, second_snake, first_food,
                         second_food, player_wasd, player_ijkl, time_flag):
+    """Defines a result screen view in multiplyplayer mode.
+
+    Arguments:
+        screen: Game display.
+        first_snake(Snake): An instanse of Snake.
+        second_snake(Second_snake): An instance Second_snake.
+        first_food(Food): An instance of Food.
+        second_food(Food): An instance of Food.
+        player_wasd(str): Name of player, which plays on 'wasd' keys.
+        player_ijkl(str): Name of player, which plays on 'ijkl' keys.
+        time_flag(bool): Var, that trace time end.
+    """
+
     result_screen = True
 
     points_w = len(first_snake.tail)
@@ -41,12 +53,16 @@ def multi_result_screen(screen, first_snake, second_snake, first_food,
     elif second_snake.win == 0:
         winner += '{}'.format(player_ijkl)
 
-    cause_button = Button(0, 0, -40, 40, (0, 0, 0), (0, 0, 0))
-    cause_button_ = Button(0, 0, -60, 60, (0, 0, 0), (0, 0, 0))
-    first_player_scores = Button(0, 0, 20, 140, (0, 0, 0), (0, 0, 0))
-    second_player_scores = Button(0, 0, 20, 190, (0, 0, 0), (0, 0, 0))
-    winner_button = Button(0, 0, 20, 240, (0, 0, 0), (0, 0, 0))
-    menu_button = Button(200, 50, 150, 360, (169, 169, 169), (225, 186, 207))
+    cause_button = Button(0, 0, -40, 40, Colours().BLACK, Colours().BLACK)
+    cause_button_ = Button(0, 0, -60, 60, Colours().BLACK, Colours().BLACK)
+    first_player_scores = Button(0, 0, 20, 140,
+                                 Colours().BLACK,
+                                 Colours().BLACK)
+    second_player_scores = Button(0, 0, 20, 190,
+                                  Colours().BLACK,
+                                  Colours().BLACK)
+    winner_button = Button(0, 0, 20, 240, Colours().BLACK, Colours().BLACK)
+    menu_button = Button(200, 50, 150, 360, Colours().GREY, Colours().PINK)
 
     while result_screen:
         pg.time.delay(50)
@@ -55,7 +71,7 @@ def multi_result_screen(screen, first_snake, second_snake, first_food,
             if event.type == pg.QUIT:
                 sys.exit()
 
-        screen.fill(BLACK)
+        screen.fill(Colours().BLACK)
 
         first_food.draw_food(screen, first_snake)
         second_food.draw_food(screen, second_snake)
@@ -83,6 +99,16 @@ def multi_result_screen(screen, first_snake, second_snake, first_food,
 
 def single_result_screen(screen, first_snake, first_food,
                          player_wasd, time_flag):
+    """Defines a result screen view in singleplayer mode.
+
+    Arguments:
+        screen: Game display.
+        first_snake(Snake): An instanse of Snake.
+        first_food(Food): An instance of Food.
+        player_wasd(str): Name of player, which plays on 'wasd' keys.
+        time_flag(bool): Var, that trace time end.
+    """
+
     result_screen = True
 
     points_w = len(first_snake.tail)
@@ -90,10 +116,10 @@ def single_result_screen(screen, first_snake, first_food,
     player_w = player_wasd + ':'
     player_w = '{} {}'.format(player_w.ljust(20, ' '), points_w)
 
-    cause_button = Button(0, 0, - 40, 40, (0, 0, 0), (0, 0, 0))
-    cause_button_ = Button(0, 0, - 60, 60, (0, 0, 0), (0, 0, 0))
-    player_scores = Button(0, 0, 130, 180, (0, 0, 0), (0, 0, 0))
-    menu_button = Button(200, 50, 150, 360, (169, 169, 169), (225, 186, 207))
+    cause_button = Button(0, 0, - 40, 40, Colours().BLACK, Colours().BLACK)
+    cause_button_ = Button(0, 0, - 60, 60, Colours().BLACK, Colours().BLACK)
+    player_scores = Button(0, 0, 130, 180, Colours().BLACK, Colours().BLACK)
+    menu_button = Button(200, 50, 150, 360, Colours().GREY, Colours().PINK)
 
     while result_screen:
         pg.time.delay(50)
@@ -102,7 +128,7 @@ def single_result_screen(screen, first_snake, first_food,
             if event.type == pg.QUIT:
                 sys.exit()
 
-        screen.fill(BLACK)
+        screen.fill(Colours().BLACK)
 
         first_food.draw_food(screen, first_snake)
         first_snake.draw_snake(screen)
