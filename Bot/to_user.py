@@ -13,11 +13,14 @@ def place_to_link(places, required_place):
     print(f'required is {required_place}')
     for place in places:
         if (required_place.upper() == list(place.keys())[0].upper()):
+            print('equal')
             print(list(place.keys())[0])
             return place[list(place.keys())[0]]
-        elif required_place.upper() in list(place.keys())[0].upper()[:10]:
+        elif required_place.upper() in list(place.keys())[0].upper()[:10] and len(required_place) > 2:
+            print('in')
             print(list(place.keys())[0])
             return place[list(place.keys())[0]]
+    return 'There is no such a place!'
 
 # #  Я хочу:
 # Получить букву - выдать регионы.
